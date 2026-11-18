@@ -410,6 +410,9 @@ def commit(added, conflicts, sources):
     r = subprocess.run(["git", "-C", ROOT, "-c", "user.name=Никита Егоров", "-c", "user.email=" + OWN_EMAIL,
                         "commit", "-q", "-m", msg], capture_output=True, text=True)
     log("commit: %s %s" % (title, r.stderr.strip()[:200]))
+    p = subprocess.run(["git", "-C", ROOT, "push", "-q"], capture_output=True, text=True, timeout=60)
+    if p.returncode:
+        log("push failed: %s" % p.stderr.strip()[:200])
 
 
 # ---------- команды ----------
