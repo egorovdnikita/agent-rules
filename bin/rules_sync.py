@@ -492,7 +492,8 @@ def kick():
         info = json.loads(sys.stdin.read() or "{}")
     except Exception:
         info = {}
-    log("kick: %s" % (info.get("hook_event_name") or "?"))
+    log("kick: %s, %s, %s" % (info.get("hook_event_name") or "?",
+                              os.path.basename(info.get("cwd") or "") or "?", info.get("reason") or "-"))
     # ждём QUIET_SEC, чтобы закрытая сессия дописала файл, затем обрабатываем
     subprocess.Popen(["/bin/sh", "-c", "sleep %d; exec /usr/bin/python3 -I '%s' run" % (QUIET_SEC + 5, __file__)],
                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
