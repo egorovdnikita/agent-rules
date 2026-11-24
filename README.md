@@ -103,7 +103,3 @@ launchctl kickstart gui/$(id -u)/local.agent-rules.sync   # запустить l
 ## Приватность
 
 Репозиторий приватный: в `CLAUDE.md` личные данные владельца. Публичным его не делать. Не коммитить `.state/`: там выдержки из переписок.
-
-## Общие навыки для Claude и OpenAI
-
-Исходники в `skills/`, адаптеры в `adapters/`; сборка и подключение — `bin/skills.py`. Устройство, обновление и ограничения: [docs/SHARED_SKILLS.md](docs/SHARED_SKILLS.md). Существующий Handoff сохраняется на прежнем месте.
